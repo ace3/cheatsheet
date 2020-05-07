@@ -1,4 +1,4 @@
-# ace3 Compiled Cheatsheet
+# Compiled Cheatsheet
 
 
 Scripts and config files to quickly start a new Debian & derivatives webserver that has:
@@ -8,7 +8,7 @@ Scripts and config files to quickly start a new Debian & derivatives webserver t
 - MariaDb
 - PostgreSQL
 - Nginx
-- letsenscrypt
+- Let's Encrypt (Certbot)
 
 Assumes you are logged in as root.
 
@@ -143,5 +143,23 @@ Run SQL Command
     
 ### Symbolic Links for Nginx Config
 	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+    
+    
+# Let's Encrypt
+	sudo add-apt-repository ppa:certbot/certbot
+    # follow instructions on terminal
+    
+    sudo apt install python-certbot-nginx
+    
+    # optional if using ufw
+    sudo ufw status
+    sudo ufw allow 'Nginx Full'
+    sudo ufw delete allow 'Nginx HTTP'
+    
+### Obtaining an SSL Certificate
+	sudo certbot --nginx -d example.com -d www.example.com
+    
+### Verifying Certbot Auto-Renewal
+	sudo certbot renew --dry-run
     
     
