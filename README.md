@@ -4,15 +4,15 @@
 Scripts and config files to quickly start a new Debian & derivatives webserver that has:
 
 - ufw
-- node.js
-- mariadb
+- Node.js
+- MariaDb
 - PostgreSQL
-- nginx
+- Nginx
 - letsenscrypt
 
 Assumes you are logged in as root.
 
-# UFW
+# ufw
     ufw default deny incoming
     ufw default allow outgoing
     ufw allow 22  # ssh
@@ -92,4 +92,56 @@ Run SQL Command
     
     # check connection by using
     conninfo 
+    
+# Nginx
+	sudo apt update
+    sudo apt install nginx
+    
+    # optional if ufw is enabled
+    sudo ufw app list
+    sudo ufw allow 'Nginx HTTP'
+    sudo ufw status
+    
+    # check status by using
+    systemctl status nginx
+    curl -4 icanhazip.com
+    http://your_server_ip
+    
+### !**TODO** Configuration for PHP-FPM 
+	# configuration for PHP-FPM
+    
+### Managing the Nginx Process
+	# disable
+    sudo systemctl disable nginx
+    
+    # enable
+    sudo systemctl enable nginx
+    
+    # stop
+    sudo systemctl stop nginx
+    
+    # start
+    sudo systemctl start nginx
+    
+    # restart
+    sudo systemctl restart nginx
+    
+    # reload config
+    sudo systemctl reload nginx
+    
+    # test config
+    sudo service nginx configtest
+    
+### !**TODO** Nginx Templates 
+
+    # Node.js Express.js Template
+    
+    # PHP Laravel Template
+    
+    # CodeIgniter Template
+    
+    
+### Symbolic Links for Nginx Config
+	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+    
     
