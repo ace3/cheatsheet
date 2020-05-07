@@ -6,7 +6,7 @@ Scripts and config files to quickly start a new Debian & derivatives webserver t
 - ufw
 - node.js
 - mariadb
-- postgres
+- PostgreSQL
 - nginx
 - letsenscrypt
 
@@ -38,11 +38,11 @@ Assumes you are logged in as root.
 ### (Optional) Adjusting User Authentication and Privileges
 	sudo mysql
 
-`GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;`
+Run SQL Command
 
-`FLUSH PRIVILEGES;`
-
-`exit`
+    GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+    FLUSH PRIVILEGES;
+    exit
 
 
 ### (Optional) Testing MariaDB
@@ -52,4 +52,44 @@ Assumes you are logged in as root.
 	sudo mysqladmin version
     # or
     mysqladmin -u admin -p version
+    
+# PostgreSQL 
+	sudo apt update
+    sudo apt install postgresql postgresql-contrib
+    
+    
+### Switching to Postgres Account
+	sudo -i -u postgres
+    #or access directly with
+    sudo -u postgres psql
+    
+    # run postgres CLI
+    psql 
+    
+    # quit by using this command below
+    \q
+    
+### Create Postgres Account
+	createuser --interactive
+    # or
+    sudo -u postgres createuser --interactive
+    
+    # follow instructions in terminal
+    
+### Create Postgres Database
+	createdb sammy
+    # or
+    sudo -u postgres createdb sammy
+    
+### Opening a Postgres Prompt with the New Role
+	# first, create the unix account
+    sudo adduser sammy
+    
+    # connect by using
+    sudo -i -u sammy && psql
+    # or
+    sudo -u sammy psql
+    
+    # check connection by using
+    conninfo 
     
