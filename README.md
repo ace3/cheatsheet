@@ -9,6 +9,9 @@ Scripts and config files to quickly start a new Debian & derivatives webserver t
 - PostgreSQL
 - Nginx
 - Let's Encrypt (Certbot)
+- Build Tools
+- Docker
+- Docker PostgreSQL
 
 Assumes you are logged in as root.
 
@@ -163,3 +166,22 @@ Run SQL Command
 	sudo certbot renew --dry-run
     
     
+# Build Tools
+	apt-get install python python3 make build-essential
+
+# Docker
+	apt-get update
+    apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    # apt-key fingerprint 0EBFCD88
+    add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+       $(lsb_release -cs) \
+       stable"
+    apt-get update
+    apt-get install docker-ce docker-ce-cli containerd.io
+    
+# Docker PostgreSQL
+	cd ~
+    mkdir postgresdata
+    docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=YOUR-PW -d -p 5432:5432 -v $HOME/postgresdata:/var/lib/postgresql/data  postgres
+    docker ps
