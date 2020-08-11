@@ -2,17 +2,17 @@
 
 Scripts and config files to quickly start a new Debian & derivatives webserver that has:
 
-- ufw
-- Node.js
-- MariaDb
-- PostgreSQL
-- Nginx
-- Let's Encrypt (Certbot)
-- Build Tools
-- Docker
-- Docker PostgreSQL
+- [ufw](#ufw)
+- [Node.js](#nodejs)
+- [MariaDb](#mariadb)
+- [PostgreSQL](#postgresql)
+- [Nginx](#nginx)
+- [Let's Encrypt (Certbot)](#lets)
+- [Build Tools](#build)
+- [Docker](#docker)
 
-Assumes you are logged in as root.
+\*Assumes you are logged in as root.
+<a name ="ufw"></a>
 
 # ufw
 
@@ -27,11 +27,15 @@ Assumes you are logged in as root.
     # ufw allow in on eth0 to any port 80
     ufw enable
 
+<a name ="nodejs"></a>
+
 # Node.js
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     # follow instructions in terminal
     nvm install 12.16.3
+
+<a name ="mariadb"></a>
 
 # MariaDB
 
@@ -59,6 +63,8 @@ Run SQL Command
     sudo mysqladmin version
     # or
     mysqladmin -u admin -p version
+
+<a name="postgresql"></a>
 
 # PostgreSQL
 
@@ -103,6 +109,8 @@ Run SQL Command
 
     # check connection by using
     conninfo
+
+<a name="nginx"></a>
 
 # Nginx
 
@@ -158,6 +166,8 @@ Run SQL Command
 
     sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 
+<a name="lets"></a>
+
 # Let's Encrypt
 
     sudo add-apt-repository ppa:certbot/certbot
@@ -178,9 +188,13 @@ Run SQL Command
 
     sudo certbot renew --dry-run
 
+<a name="build"></a>
+
 # Build Tools
 
     apt-get install python python3 make build-essential
+
+<a name="docker"></a>
 
 # Docker
 
